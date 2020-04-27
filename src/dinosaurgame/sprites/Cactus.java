@@ -11,6 +11,8 @@ public class Cactus extends Sprite {
 
     private int cactusWidth = 50;
 
+    private boolean animate = true;
+
     public Cactus(int x, int y) {
         image = new Image("file:assets/cactus.png", cactusWidth, 0, true, true);
 
@@ -22,11 +24,17 @@ public class Cactus extends Sprite {
     }
 
 
+    public void stop() {
+        animate = false;
+    }
+
     @Override
     public void update(long now) {
-        int milliSecondsSinceStart = (int)(System.currentTimeMillis() - timeStarted);
+        if (animate) {
+            int milliSecondsSinceStart = (int) (System.currentTimeMillis() - timeStarted);
 
-        x = (int)(initialX - (milliSecondsSinceStart * speed));
+            x = (int) (initialX - (milliSecondsSinceStart * speed));
+        }
     }
 
     public int getX() {
