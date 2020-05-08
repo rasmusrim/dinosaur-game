@@ -13,8 +13,6 @@ plugins {
 }
 
 repositories {
-    // Use jcenter for resolving dependencies.
-    // You can declare any Maven/Ivy/file repository here.
     jcenter()
 }
 
@@ -24,25 +22,16 @@ javafx {
 }
 
 dependencies {
-    // This dependency is used by the application.
-    implementation 'com.google.guava:guava:28.2-jre'
-
-    // Use JUnit test framework
-    testImplementation 'junit:junit:4.12'
 }
 
 application {
-    // Define the main class for the application.
-    mainClassName = 'com.rasmusrim.dinosaur.game.Main'
+    mainClassName = 'com.rasmusrim.dinosaur.game.Application'
 }
 
-sourceSets {
-    main {
-        java {
-            srcDir 'src/main/java'
-        }
-        resources {
-            srcDir 'src/main/resources'
-        }
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.rasmusrim.dinosaur.game.Main'
+
     }
 }
+
