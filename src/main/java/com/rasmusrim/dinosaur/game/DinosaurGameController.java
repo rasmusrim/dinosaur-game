@@ -1,6 +1,6 @@
-package dinosaurgame;
+package com.rasmusrim.dinosaur.game;
 
-import com.intellij.codeInsight.intention.impl.AddOnDemandStaticImportAction;
+import com.rasmusrim.dinosaur.game.sprites.*;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -15,11 +15,10 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import dinosaurgame.sprites.*;
-import org.bouncycastle.operator.bc.BcAsymmetricKeyUnwrapper;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
+import java.net.URISyntaxException;
 import java.util.*;
 
 public class DinosaurGameController extends AnimationTimer {
@@ -45,7 +44,7 @@ public class DinosaurGameController extends AnimationTimer {
 
     private int score;
 
-    public void initUI(Stage mainStage) {
+    public void initUI(Stage mainStage) throws URISyntaxException {
         stage = mainStage;
 
         Group root = new Group();
@@ -56,7 +55,7 @@ public class DinosaurGameController extends AnimationTimer {
 
         gc = canvas.getGraphicsContext2D();
 
-        background = new Image("file:assets/background.png");
+        background = new Image(getClass().getResource("/background.png").toString());
 
         dinosaur = new Dinosaur(initialDinosaurX, yValueOfGround);
         dinosaur.setGraphicsContext(gc);
@@ -69,7 +68,11 @@ public class DinosaurGameController extends AnimationTimer {
             }
 
             if (dinosaur.isDead()) {
-                restartGame();
+                try {
+                    restartGame();
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -86,7 +89,7 @@ public class DinosaurGameController extends AnimationTimer {
 
     }
 
-    private void restartGame() {
+    private void restartGame() throws URISyntaxException {
         this.initUI(stage);
     }
 

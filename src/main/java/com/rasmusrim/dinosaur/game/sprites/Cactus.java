@@ -1,4 +1,4 @@
-package dinosaurgame.sprites;
+package com.rasmusrim.dinosaur.game.sprites;
 
 import javafx.scene.image.Image;
 
@@ -14,7 +14,7 @@ public class Cactus extends Sprite {
     private boolean animate = true;
 
     public Cactus(int x, int y) {
-        image = new Image("file:assets/cactus.png", cactusWidth, 0, true, true);
+        image = new Image(getClass().getResource("/cactus.png").toString(), cactusWidth, 0, true, true);
 
         this.x = x;
         this.y = y;

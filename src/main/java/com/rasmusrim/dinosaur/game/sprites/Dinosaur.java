@@ -1,20 +1,20 @@
-package dinosaurgame.sprites;
+package com.rasmusrim.dinosaur.game.sprites;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.media.AudioClip;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.transform.Rotate;
 
+import javax.imageio.ImageIO;
 import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 public class Dinosaur extends Sprite {
     final private int initialY;
 
     private int jumpDurationInMilliSeconds = 1300;
     private int jumpHeight = 100;
-
     private Image image1;
     private Image image2;
 
@@ -25,11 +25,9 @@ public class Dinosaur extends Sprite {
 
     private boolean isDead = false;
 
-    private MediaPlayer dieSoundPlayer;
-
     public Dinosaur(int x, int y) {
-        image1 = new Image("file:assets/dinosaur.png", 50, 100, true, true);
-        image2 = new Image("file:assets/dinosaur2.png", 50, 100, true, true);
+        image1 = new Image(getClass().getResource("/dinosaur.png").toString(), 50, 100, true, true);
+        image2 = new Image(getClass().getResource("/dinosaur2.png").toString(), 50, 100, true, true);
         image = image1;
         this.x = x;
         this.y = y;
@@ -80,7 +78,6 @@ public class Dinosaur extends Sprite {
     }
 
     private void calculateDieRotation() {
-        System.out.println("Calculating die rotation");
         rotationAngle -= 5 ;
         if (rotationAngle < -130) {
             isDead = true;

@@ -1,4 +1,4 @@
-package dinosaurgame.sprites;
+package com.rasmusrim.dinosaur.game.sprites;
 
 import javafx.scene.image.Image;
 
@@ -20,7 +20,7 @@ public class Cloud extends Sprite {
         speed = Math.random() / 100 + 0.05F;
         cloudStarted = System.currentTimeMillis();
 
-        image = new Image("file:assets/cloud.png", cloudWidth, 100, true, true);
+        image = new Image(getClass().getResource("/cloud.png").toString(), cloudWidth, 100, true, true);
 
     }
 

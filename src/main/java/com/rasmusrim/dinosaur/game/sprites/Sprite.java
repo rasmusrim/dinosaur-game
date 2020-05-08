@@ -1,4 +1,4 @@
-package dinosaurgame.sprites;
+package com.rasmusrim.dinosaur.game.sprites;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;

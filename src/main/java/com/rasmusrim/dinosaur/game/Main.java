@@ -1,7 +1,9 @@
-package dinosaurgame;
+package com.rasmusrim.dinosaur.game;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+
+import java.net.URISyntaxException;
 
 public class Main extends Application {
 
@@ -10,7 +12,7 @@ public class Main extends Application {
         initUI(primaryStage);;
     }
 
-    private void initUI(Stage stage) {
+    private void initUI(Stage stage) throws URISyntaxException {
 
         DinosaurGameController controller = new DinosaurGameController();
         controller.initUI(stage);
